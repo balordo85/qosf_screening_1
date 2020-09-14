@@ -110,9 +110,9 @@ def norm(state):
         toBeReturned = toBeReturned + state[j].real**2 + state[j].imag**2
     return toBeReturned
 
-def distance(theta, phi):    
+def distance(theta):    
     '''
-    Distance between the output of the circuit at some theta and a generic Statevector
+    Distance between phi and the output of the circuit at some theta
     '''
 
     # Simulator choice
@@ -126,12 +126,6 @@ def distance(theta, phi):
     
     # Returning the result
     return norm(result_statevector.data - phi.data)
-
-def dist(theta):
-    '''
-    Distance as a function of theta
-    '''
-    return distance(theta, phi)
     
 def date2Str():
     '''
@@ -197,10 +191,10 @@ if __name__ == '__main__':
         for j in range (4 * 2 * L):
             theta0[j] = random.random() * 2 * math.pi
 
-        # circuit(theta0).draw(output = 'mpl', filename = 'report/pippo_{}.png'.format(L))
+        # circuit(theta0).draw(output = 'mpl', filename = 'report/circuit_L{}_yg{}_gg{}.png'.format(L, yellow_gate, green_gate))
         
         # Conjugate gradient descent
-        result = scipy.optimize.fmin_cg(f = dist, x0 = theta0, full_output = True)
+        result = scipy.optimize.fmin_cg(f = distance, x0 = theta0, full_output = True)
         
         # Output
         initial_theta[L - 1] = theta0
