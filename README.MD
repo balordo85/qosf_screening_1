@@ -25,7 +25,7 @@ Each execution of the script, if complete, produces two output files. The name o
 
 The code is very simple, and I hope clear; very few explanations should be needed. The script is divided in three parts:
 1) Declaration of constants (actually, only the random vector &phi; appearing in the definition of &epsilon;);
-2) Declaration of functions: they basically involve the definition of the circuit, the computation of the distance and the generation of the report;
+2) Declaration of functions: they basically involve the validation of the arguments, the definition of the circuit, the computation of the distance and the generation of the report;
 3) Main function: it is where the computation of &epsilon; is triggered. The minimization procedure makes use of the conjugate-gradient descent algorithm, within the implementation provided by the `scipy.optimize.fmin_cg` function (https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_cg.html).
 
 # Commenting the results
